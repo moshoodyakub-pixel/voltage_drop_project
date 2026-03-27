@@ -79,6 +79,8 @@
             <p class="text-center text-muted mb-4">Join the Voltage Drop community</p>
 
             <form method="POST" action="{{ url_for('signup') }}" novalidate>
+              <!-- CSRF token -->
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
               <!-- Username -->
               <div class="mb-3">
                 <label for="username" class="form-label fw-semibold">Username</label>
@@ -110,7 +112,11 @@
                   />
                   <span
                     class="input-group-text password-toggle"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Show or hide password"
                     onclick="toggleVisibility('password', this)"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){toggleVisibility('password',this);event.preventDefault();}"
                     title="Show/hide password"
                   >👁</span>
                 </div>
@@ -131,7 +137,11 @@
                   />
                   <span
                     class="input-group-text password-toggle"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Show or hide confirm password"
                     onclick="toggleVisibility('confirm_password', this)"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){toggleVisibility('confirm_password',this);event.preventDefault();}"
                     title="Show/hide password"
                   >👁</span>
                 </div>
